@@ -670,74 +670,74 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 // blowup.min.js
 // Paul Krishnamurthy 2016
 $(function(o) {
-	o.fn.blowup = function(e) {
-		var t = this;
-		if (!t.is("img")) return void console.log("%c Blowup.js Error: %cTarget element is not an image.", "background: #FCEBB6; color: #F07818; font-size: 17px; font-weight: bold;", "background: #FCEBB6; color: #F07818; font-size: 17px;");
-		var n = t.attr("src"),
-		i = (t.width(), t.height(), new Image);
-		i.src = t.attr("src");
-		var r = {
-			round: 0,
-			width: 300,
-			height: 300,
-			background: "#FFF",
-			shadow: "0 8px 17px 0 rgba(0, 0, 0, 0.2)",
-			border: "3px solid #FFF",
-			cursor: 1,
-			zIndex: 999999
-		},
-		s = o.extend(r, e);
-		t.on("dragstart",
-		function(o) {
-			o.preventDefault()
-		}),
-		t.css("cursor", s.cursor ? "pointer": "none");
-		$blowupLens = $("#BlowupLens");
-		if($blowupLens.length==0){
-			var d = document.createElement("div");
-			d.id = "BlowupLens";
-			o("body").append(d);
-			$blowupLens = $("#BlowupLens");
-		}
-		$blowupLens.css({
-			position: "absolute",
-			display: "none",
-			"pointer-events": "none",
-			zIndex: s.zIndex,
-			width: s.width,
-			height: s.height,
-			border: s.border,
-			background: s.background,
-			"border-radius": s.round ? "50%": "none",
-			"box-shadow": s.shadow,
-			"background-repeat": "no-repeat"
-		}),
-		t.mouseenter(function() {
-			$blowupLens.css("display", "block")
-		}),
-		
-		t.mousemove(function(o) {
-			if(t[0].width<t[0].naturalWidth || t[0].height<t[0].naturalHeight){
-				var e = o.pageX - 100 //o.pageX - s.width / 2 + 100,
-				r = o.pageY - s.height + 100 //o.pageY - s.height / 2,
-				d = o.pageX - this.offsetLeft,
-				a = o.pageY - this.offsetTop,
-				u = -Math.floor(d / t.width() * i.width - s.width / 2),
-				h = -Math.floor(a / t.height() * i.height - s.height / 2);
-				$blowupLens.css({
-					left: e,
-					top: r,
-					"background-image": "url(" + n + ")",
-					"background-position": u + "px" + " " + h + "px"
-				})
-			}else{
-				$blowupLens.css("display", "none")
-			}
-		}),
-		t.mouseleave(function() {
-			$blowupLens.css("display", "none")
-		})
-	}
+    o.fn.blowup = function(e) {
+        var t = this;
+        if (!t.is("img")) return void console.log("%c Blowup.js Error: %cTarget element is not an image.", "background: #FCEBB6; color: #F07818; font-size: 17px; font-weight: bold;", "background: #FCEBB6; color: #F07818; font-size: 17px;");
+        var n = t.attr("src"),
+        i = (t.width(), t.height(), new Image);
+        i.src = t.attr("src");
+        var r = {
+            round: 0,
+            width: 300,
+            height: 300,
+            background: "#FFF",
+            shadow: "0 8px 17px 0 rgba(0, 0, 0, 0.2)",
+            border: "3px solid #FFF",
+            cursor: 1,
+            zIndex: 999999
+        },
+        s = o.extend(r, e);
+        t.on("dragstart",
+        function(o) {
+            o.preventDefault()
+        }),
+        t.css("cursor", s.cursor ? "pointer": "none");
+        $blowupLens = $("#BlowupLens");
+        if($blowupLens.length==0){
+            var d = document.createElement("div");
+            d.id = "BlowupLens";
+            o("body").append(d);
+            $blowupLens = $("#BlowupLens");
+        }
+        $blowupLens.css({
+            position: "absolute",
+            display: "none",
+            "pointer-events": "none",
+            zIndex: s.zIndex,
+            width: s.width,
+            height: s.height,
+            border: s.border,
+            background: s.background,
+            "border-radius": s.round ? "50%": "none",
+            "box-shadow": s.shadow,
+            "background-repeat": "no-repeat"
+        }),
+        t.mouseenter(function() {
+            $blowupLens.css("display", "block")
+        }),
+        
+        t.mousemove(function(o) {
+            if(t[0].width<t[0].naturalWidth || t[0].height<t[0].naturalHeight){
+                var e = o.pageX - 100 //o.pageX - s.width / 2 + 100,
+                r = o.pageY - s.height + 100 //o.pageY - s.height / 2,
+                d = o.pageX - this.offsetLeft,
+                a = o.pageY - this.offsetTop,
+                u = -Math.floor(d / t.width() * i.width - s.width / 2),
+                h = -Math.floor(a / t.height() * i.height - s.height / 2);
+                $blowupLens.css({
+                    left: e,
+                    top: r,
+                    "background-image": "url(" + n + ")",
+                    "background-position": u + "px" + " " + h + "px"
+                })
+            }else{
+                $blowupLens.css("display", "none")
+            }
+        }),
+        t.mouseleave(function() {
+            $blowupLens.css("display", "none")
+        })
+    }
 });
 //CRC32 Library
 (function(){var d=[0,1996959894,3993919788,2567524794,124634137,1886057615,3915621685,2657392035,249268274,2044508324,3772115230,2547177864,162941995,2125561021,3887607047,2428444049,498536548,1789927666,4089016648,2227061214,450548861,1843258603,4107580753,2211677639,325883990,1684777152,4251122042,2321926636,335633487,1661365465,4195302755,2366115317,997073096,1281953886,3579855332,2724688242,1006888145,1258607687,3524101629,2768942443,901097722,1119000684,3686517206,2898065728,853044451,1172266101,
@@ -782,55 +782,55 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                 var self = $(this);
                 if (self.is(':hidden')){
                     self.remove();
-				}
+                }
             });
-			markup.find('.noDoc').remove() //don't be in doc
-			
+            markup.find('.noDoc').remove() //don't be in doc
+            
             // Embed all images using Data URLs
             var images = Array();
             var img = markup.find('img');
             for (var i = 0; i < img.length; i++) {
                 // Calculate dimensions of output image
-				try{
-					var w = Math.min(img[i].width, options.maxWidth);
-					var h = img[i].height * (w / img[i].width);
-					// Create canvas for converting image to data URL
-					var canvas = document.createElement("CANVAS");
-					canvas.width = w;
-					canvas.height = h;
-					// Draw image to canvas
-					var context = canvas.getContext('2d');
-					context.drawImage(img[i], 0, 0, w, h);
-					// Get data URL encoding of image
-					var uri = canvas.toDataURL("image/png/jpg");
-					$(img[i]).attr("src", img[i].src);
-					img[i].width = w;
-					img[i].height = h;
-					// Save encoded image to array
-					images[i] = {
-						type: uri.substring(uri.indexOf(":") + 1, uri.indexOf(";")),
-						encoding: uri.substring(uri.indexOf(";") + 1, uri.indexOf(",")),
-						location: $(img[i]).attr("src"),
-						data: uri.substring(uri.indexOf(",") + 1)
-					};
-				}catch(e){
-					//img[i].remove();
-				}
+                try{
+                    var w = Math.min(img[i].width, options.maxWidth);
+                    var h = img[i].height * (w / img[i].width);
+                    // Create canvas for converting image to data URL
+                    var canvas = document.createElement("CANVAS");
+                    canvas.width = w;
+                    canvas.height = h;
+                    // Draw image to canvas
+                    var context = canvas.getContext('2d');
+                    context.drawImage(img[i], 0, 0, w, h);
+                    // Get data URL encoding of image
+                    var uri = canvas.toDataURL("image/png/jpg");
+                    $(img[i]).attr("src", img[i].src);
+                    img[i].width = w;
+                    img[i].height = h;
+                    // Save encoded image to array
+                    images[i] = {
+                        type: uri.substring(uri.indexOf(":") + 1, uri.indexOf(";")),
+                        encoding: uri.substring(uri.indexOf(";") + 1, uri.indexOf(",")),
+                        location: $(img[i]).attr("src"),
+                        data: uri.substring(uri.indexOf(",") + 1)
+                    };
+                }catch(e){
+                    //img[i].remove();
+                }
             }
 
             // Prepare bottom of mhtml file with image data
-			try{
-				var mhtmlBottom = "\n";
-				for (var i = 0; i < images.length; i++) {
-					mhtmlBottom += "--NEXT.ITEM-BOUNDARY\n";
-					mhtmlBottom += "Content-Location: " + images[i].location + "\n";
-					mhtmlBottom += "Content-Type: " + images[i].type + "\n";
-					mhtmlBottom += "Content-Transfer-Encoding: " + images[i].encoding + "\n\n";
-					mhtmlBottom += images[i].data + "\n\n";
-				}
-				mhtmlBottom += "--NEXT.ITEM-BOUNDARY--";
-			}catch(e){
-			}
+            try{
+                var mhtmlBottom = "\n";
+                for (var i = 0; i < images.length; i++) {
+                    mhtmlBottom += "--NEXT.ITEM-BOUNDARY\n";
+                    mhtmlBottom += "Content-Location: " + images[i].location + "\n";
+                    mhtmlBottom += "Content-Type: " + images[i].type + "\n";
+                    mhtmlBottom += "Content-Transfer-Encoding: " + images[i].encoding + "\n\n";
+                    mhtmlBottom += images[i].data + "\n\n";
+                }
+                mhtmlBottom += "--NEXT.ITEM-BOUNDARY--";
+            }catch(e){
+            }
 
             // Aggregate parts of the file together
             var fileContent = static.mhtml.top.replace("_html_", static.mhtml.head.replace("_styles_", styles) + static.mhtml.body.replace("_body_", markup.html())) + mhtmlBottom;
@@ -854,32 +854,32 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
 <script>
 //显示灰色 jQuery 遮罩层
 function showBg(text) {
-	$("#container").addClass("blur");
-	var bh = $("body").height();
-	var bw = $("body").width();
-	$("#fullbg").css({
-		display: "block"
-	});
-	$("#dialog").show();
-	$("#fullbg").show();
-	document.getElementById("dialogContent").innerText = text
-	setBgProcess(0)
+    $("#container").addClass("blur");
+    var bh = $("body").height();
+    var bw = $("body").width();
+    $("#fullbg").css({
+        display: "block"
+    });
+    $("#dialog").show();
+    $("#fullbg").show();
+    document.getElementById("dialogContent").innerText = text
+    setBgProcess(0)
 }
 function setBgProcess(p){
-	var html=''
-	if(p>0){
-		html+='<div class="Bar"> '
-		html+='	<div style="width: '+p+'%;"> '
-		html+='		<span>'+p+'%</span> '
-		html+='	</div> '
-		html+='</div>'
-	}
-	document.getElementById("dialogPer").innerHTML = html
+    var html=''
+    if(p>0){
+        html+='<div class="Bar"> '
+        html+='    <div style="width: '+p+'%;"> '
+        html+='        <span>'+p+'%</span> '
+        html+='    </div> '
+        html+='</div>'
+    }
+    document.getElementById("dialogPer").innerHTML = html
 }
 //关闭灰色 jQuery 遮罩
 function closeBg() {
-	$("#fullbg,#dialog").hide();
-	$("#container").removeClass("blur");
+    $("#fullbg,#dialog").hide();
+    $("#container").removeClass("blur");
 }
 </script>
 <script>
@@ -1011,8 +1011,8 @@ function closeBg() {
                                 var elements_left = elements.length;
                                 settings.load.call(self, elements_left, settings);
                             }
-							
-							$self.trigger("startLazyload");
+                            
+                            $self.trigger("startLazyload");
                         })
                         .attr("src", $self.attr("data-" + settings.data_attribute));
                 }
@@ -1162,27 +1162,27 @@ function closeBg() {
 <div id="div_player_list">
 </div>
 <script type="text/html" id="template_player_list">
-		<table width="100%" border="1">
-		  <tr>
-			<td>玩家名称</td>
-			<td>玩家ID</td>
-			<td>可视</td>
-			<td>颜色选择</td>
-		  </tr>
-		  <% Object.keys(playerData).forEach(key => { %>
-			<tr>
-			<td><div id="player_editor_id_<%= playerData[key].id %>" oninput="_player_on_changing(this,'<%= playerData[key].id %>')" contenteditable="true" ><%= playerData[key].player %></div></td>
-			<td><%= playerData[key].id %></td>
-			<td><input type="checkbox" id="visibility_id_<%= playerData[key].id %>" class="regular-checkbox" checked="checked" onclick="_visibility_on_changed(this,'<%= playerData[key].id %>')"><label for="visibility_id_<%= playerData[key].id %>"></label></div>
-			</td>
-			<td><input onchange="_color_on_changed(this,'<%= playerData[key].id %>')" type="color" value="<%= playerData[key].color %>"/></td>
-			</tr>
-		<% }) %>
-		
-		  
-		
-		</table>
-	</script>
+        <table width="100%" border="1">
+          <tr>
+            <td>玩家名称</td>
+            <td>玩家ID</td>
+            <td>可视</td>
+            <td>颜色选择</td>
+          </tr>
+          <% Object.keys(playerData).forEach(key => { %>
+            <tr>
+            <td><div id="player_editor_id_<%= playerData[key].id %>" oninput="_player_on_changing(this,'<%= playerData[key].id %>')" contenteditable="true" ><%= playerData[key].player %></div></td>
+            <td><%= playerData[key].id %></td>
+            <td><input type="checkbox" id="visibility_id_<%= playerData[key].id %>" class="regular-checkbox" checked="checked" onclick="_visibility_on_changed(this,'<%= playerData[key].id %>')"><label for="visibility_id_<%= playerData[key].id %>"></label></div>
+            </td>
+            <td><input onchange="_color_on_changed(this,'<%= playerData[key].id %>')" type="color" value="<%= playerData[key].color %>"/></td>
+            </tr>
+        <% }) %>
+        
+          
+        
+        </table>
+    </script>
 <div align="center" class="m-no-select">
 <table width="100%" border="0">
 <tbody>
@@ -1223,31 +1223,31 @@ function closeBg() {
 </div>
 </div>
 <script type="text/html" id="template_colored_preview">
-	<div id="div_log_view" role="tabpanel" style="background-color:#fff">
-		<% for(var i = 0;i < logData.length;i++){ %>
-			<% var pl=playerData[logData[i].id] %>
-			<% var hiddenTimeTextsSilver = logData[i].noTime?"color:white;":"color:silver;" %>
-			<% var hiddenTimeTextsEmpty = logData[i].noTime?"color:white;":"" %>
-			<% var logControlStyle = "log_child_id_"+logData[i].id+(logData[i].noDoc?' noDoc':'') %>
-			<div class="<%=logControlStyle%>">
-			<% if (viewTime) { %>
-				<span class="log_child_time" style="<%=hiddenTimeTextsSilver%>"><%= logData[i].time %></span>
-			<% } %>
-			<span class="log_child_content<%= logData[i].ob?' log_child_ob':''%>">
-				<span style="<%=hiddenTimeTextsEmpty%>">&lt;<%= pl.player %>&gt;</span><span contenteditable="true" onblur="_content_on_onblur(this)" onfocus="_content_on_onfocus(this)"><%:= logData[i].content %></span>
-			</span><br>
-			</div>
-		<% } %>
-	</div>
-	<div id="div_log_code" role="tabpanel" style="background-color:#fff">
-		<% for(var i = 0;i < logData.length;i++){ %>
-			<% var pl=playerData[logData[i].id] %>
-				<% if (viewTime) { %>
-					<span class="log_child_time">[color=silver]<%= logData[i].time %>[/color]</span>
-				<% } %>
-				[color=<%= pl.color %>]&lt;<%= pl.player %>&gt; <%= logData[i].content %>[/color]<br/>
-		<% } %>
-	</div>
+    <div id="div_log_view" role="tabpanel" style="background-color:#fff">
+        <% for(var i = 0;i < logData.length;i++){ %>
+            <% var pl=playerData[logData[i].id] %>
+            <% var hiddenTimeTextsSilver = logData[i].noTime?"color:white;":"color:silver;" %>
+            <% var hiddenTimeTextsEmpty = logData[i].noTime?"color:white;":"" %>
+            <% var logControlStyle = "log_child_id_"+logData[i].id+(logData[i].noDoc?' noDoc':'') %>
+            <div class="<%=logControlStyle%>">
+            <% if (viewTime) { %>
+                <span class="log_child_time" style="<%=hiddenTimeTextsSilver%>"><%= logData[i].time %></span>
+            <% } %>
+            <span class="log_child_content<%= logData[i].ob?' log_child_ob':''%>">
+                <span style="<%=hiddenTimeTextsEmpty%>">&lt;<%= pl.player %>&gt;</span><span contenteditable="true" onblur="_content_on_onblur(this)" onfocus="_content_on_onfocus(this)"><%:= logData[i].content %></span>
+            </span><br>
+            </div>
+        <% } %>
+    </div>
+    <div id="div_log_code" role="tabpanel" style="background-color:#fff">
+        <% for(var i = 0;i < logData.length;i++){ %>
+            <% var pl=playerData[logData[i].id] %>
+                <% if (viewTime) { %>
+                    <span class="log_child_time">[color=silver]<%= logData[i].time %>[/color]</span>
+                <% } %>
+                [color=<%= pl.color %>]&lt;<%= pl.player %>&gt; <%= logData[i].content %>[/color]<br/>
+        <% } %>
+    </div>
 </script>
 <div align="center" class="copyleft-box">仑质 Copyright ©2021-2022 dice.center </div>
 <div align="center" class="copyleft-box">赵怡然 Copyright ©2021-2022 trpgbot.com </div>
@@ -1269,468 +1269,468 @@ var viewOB = initChecked('visibility_OB',false)
 var viewCommand = initChecked('visibility_COMMAND',false)
 var viewImage = initChecked('visibility_IMAGE',false)
 function initChecked(id,def){
-	var e = document.getElementById(id)
-	var result = localStorage.getItem(id)
-	if(result==null){
-		result = def
-	}else{
-		result = Number(result)
-	}
-	e.checked = result
-	return result
+    var e = document.getElementById(id)
+    var result = localStorage.getItem(id)
+    if(result==null){
+        result = def
+    }else{
+        result = Number(result)
+    }
+    e.checked = result
+    return result
 }
 function setStartRenderingButtonEnable(enbale){
-	setElementVisibility('startRenderingButton',enbale)
-	setElementVisibility('allSelectButton',!enbale)
-	needRerender=enbale
+    setElementVisibility('startRenderingButton',enbale)
+    setElementVisibility('allSelectButton',!enbale)
+    needRerender=enbale
 }
 function _color_on_changed(e,id){
-	loaded_players[id].color = e.value //修改玩家颜色
-	setStartRenderingButtonEnable(true)
+    loaded_players[id].color = e.value //修改玩家颜色
+    setStartRenderingButtonEnable(true)
 }
 function _visibility_on_changed(checkbox,id){
-	loaded_players[id].visibility = checkbox.checked //修改玩家是否可视
-	setStartRenderingButtonEnable(true)
+    loaded_players[id].visibility = checkbox.checked //修改玩家是否可视
+    setStartRenderingButtonEnable(true)
 }
 function _player_on_changing(textarea,id){
-	loaded_players[id].player = textarea.innerText //修改玩家名称
-	setStartRenderingButtonEnable(true)
+    loaded_players[id].player = textarea.innerText //修改玩家名称
+    setStartRenderingButtonEnable(true)
 }
 function hideThedeleteBtn(e){
-	$(e.getElementsByClassName("deleteCurrentItem")).remove()
+    $(e.getElementsByClassName("deleteCurrentItem")).remove()
 }
 function _content_on_onblur(textarea){
-	setTimeout(function(){
-		hideThedeleteBtn(textarea.parentElement.parentElement)
-	},250);
+    setTimeout(function(){
+        hideThedeleteBtn(textarea.parentElement.parentElement)
+    },250);
 }
 function _content_on_onfocus(textarea){
-	var deleteBtn = document.createElement("a"); 
-	deleteBtn.setAttribute("class","deleteCurrentItem button button-caution button-small m-no-select");
-	deleteBtn.setAttribute("onclick","this.parentElement.remove()");
-	deleteBtn.innerText="删除本行";
-	textarea.parentElement.parentElement.appendChild(deleteBtn); 
-	editedContent = true;
+    var deleteBtn = document.createElement("a"); 
+    deleteBtn.setAttribute("class","deleteCurrentItem button button-caution button-small m-no-select");
+    deleteBtn.setAttribute("onclick","this.parentElement.remove()");
+    deleteBtn.innerText="删除本行";
+    textarea.parentElement.parentElement.appendChild(deleteBtn); 
+    editedContent = true;
 }
 function _log_text_changing(){
-	needRedecode=true
-	setStartRenderingButtonEnable(true)
+    needRedecode=true
+    setStartRenderingButtonEnable(true)
 }
 function _on_switch_changed(e){//开关被改变
-	if(e.id=='visibility_TIME'){
-		viewTime=e.checked
-		//startRenderLog(false) //更新CSS应用渲染
-		setStartRenderingButtonEnable(true)//改用重新渲染
-	}else if(e.id=='visibility_CODE'){
-		viewCode=e.checked
-		setStartRenderingButtonEnable(true)
-	}else if(e.id=='visibility_OB'){
-		viewOB=e.checked
-		setStartRenderingButtonEnable(true)
-	}else if(e.id=='visibility_COMMAND'){
-		viewCommand=e.checked
-		setStartRenderingButtonEnable(true)
-	}else if(e.id=='visibility_IMAGE'){
-		viewImage=e.checked
-		setStartRenderingButtonEnable(true)
-	}
-	localStorage.setItem(e.id,Number(e.checked));
+    if(e.id=='visibility_TIME'){
+        viewTime=e.checked
+        //startRenderLog(false) //更新CSS应用渲染
+        setStartRenderingButtonEnable(true)//改用重新渲染
+    }else if(e.id=='visibility_CODE'){
+        viewCode=e.checked
+        setStartRenderingButtonEnable(true)
+    }else if(e.id=='visibility_OB'){
+        viewOB=e.checked
+        setStartRenderingButtonEnable(true)
+    }else if(e.id=='visibility_COMMAND'){
+        viewCommand=e.checked
+        setStartRenderingButtonEnable(true)
+    }else if(e.id=='visibility_IMAGE'){
+        viewImage=e.checked
+        setStartRenderingButtonEnable(true)
+    }
+    localStorage.setItem(e.id,Number(e.checked));
 }
 
 function setElementVisibility(id,v){
-	if(v)
-		document.getElementById(id).style.display=""; 
-	else
-		document.getElementById(id).style.display="none";
+    if(v)
+        document.getElementById(id).style.display=""; 
+    else
+        document.getElementById(id).style.display="none";
 }
 function empty(s){
-	return s==null||(s.constructor==String)&&(s.trim()=='')
+    return s==null||(s.constructor==String)&&(s.trim()=='')
 }
 //HTML转义
 function HTMLEncode(html) {
-	var temp = document.createElement("div");
-	(temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
-	var output = temp.innerHTML;
-	temp = null;
-	return output;
+    var temp = document.createElement("div");
+    (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+    var output = temp.innerHTML;
+    temp = null;
+    return output;
 }
 function startDecodeLog(){
-	needRedecode=false
-	function appendLogChild(unique,playerName,playerID,playerTime,othersContent){
-		if(empty(playerName)&&empty(playerID))
-			return
-		if(empty(playerName))
-			playerName=playerID
-		if(empty(playerID)){
-			for(plid in loaded_players){
-				if(loaded_players[plid].player==playerName){
-					playerID=loaded_players[plid].id
-					break
-				}
-			}
-			if(empty(playerID)){
-				playerID=crc32(playerName)
-			}
-		}
-		if(loaded_players[playerID]==null)
-			loaded_players[playerID]={
-				player:playerName,
-				id:playerID,
-				color:currentLastColorNumber>=colors.length?"#000000":colors[currentLastColorNumber++],
-				visibility:true
-			}
-		else
-			loaded_players[playerID].player=playerName
-		contents = othersContent.trim().split('\n')
-		if(contents.length==1){
-			loaded_data.push({unique:unique,id:playerID,time:playerTime,content:othersContent.trim(),noTime:false})
-		}else{
-			var sequence=false
-			contents.forEach(content=>{
-				loaded_data.push({unique:unique,id:playerID,time:playerTime,content:content.trim(),noTime:sequence})
-				if(!sequence)
-					sequence=true
-			})
-		}
-	}
-	currentLastColorNumber=0
-	loaded_data=[]
-	loaded_players={}
-	var logContent=document.getElementById("logContent").value.split('\n')
-	var othersContent = ""
-	var playerName=""
-	var playerID=""
-	var playerTime=""
-	var preferMode=-1
-	var unique=0
-	var decodeModes=[
-		function(unique){
-			var math=logLine.match(/^(.*?)?\((\d+)\) (\d+:\d+:\d+)$/i)//赵骰log格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName=math[1]
-				playerID=math[2]
-				playerTime=math[3]
-				if(playerName==null)
-					playerName = playerID
-				othersContent=""
-				return true
-			}
-			return false
-		},function(unique){
-			var math=logLine.match(/^(.*?)(\(\d+\))? (((\d{4}-\d+-\d+ )|(\d{4}\/\d+\/\d+ ))?((\d+:\d+:\d+(\.0)?)|(\d+:\d+)))$/i)//溯洄、塔格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName=math[1]
-				playerID=math[2]
-				if(playerID==null){
-					playerID=''
-				}else{
-					playerID=playerID.substr(1,playerID.length-2)
-				}
-				playerTime=math[3]
-				othersContent=""
-				return true
-			}
-			return false
-		},function(unique){
-			math=logLine.match(/^(<\d{4}-\d{2}-\d{2} \d+:\d+:\d+\.0>	)?(\[.{1,50}?\]):(.*)$/i)//塔格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName=math[2]
-				playerID=''
-				playerTime=math[1]
-				if(playerTime==null){
-					playerTime=''
-				}else{
-					playerTime=playerTime.substr(1,playerTime.length-3)
-				}
-				othersContent=math[3]
-				return true
-			}
-			return false
-		},function(unique){
-			math=logLine.match(/^(\d{4}-\d{2}-\d{2} \d+:\d+:\d+ )(.*?)\((\d+)\)$/i)//PC QQ 聊天记录导出格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName=math[2]
-				playerID=math[3]
-				playerTime=math[1]
-				othersContent=''
-				return true
-			}
-			return false
-		},function(unique){
-			math=logLine.match(/^(((\d{4}-\d{2}-\d{2} )|(\d{4}\/\d+\/\d+ ))?((\d+:\d+:\d+(\.0)?)|(\d+:\d+)))?\s?<(.*?)>(.*)$/i)//本染色器，染色后的格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName=math[9]
-				playerTime=math[1]
-				othersContent=math[10]
-				return true
-			}
-			return false
-		},function(unique){
-			math=logLine.match(/^(.*?) (\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})$/i)//新版本PC QQ的染色格式
-			if(math!=null){
-				appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-				playerName = math[1]
-				playerTime = math[2]
-				othersContent = ''
-				return true
-			}
-			return false
-		}
-	]
+    needRedecode=false
+    function appendLogChild(unique,playerName,playerID,playerTime,othersContent){
+        if(empty(playerName)&&empty(playerID))
+            return
+        if(empty(playerName))
+            playerName=playerID
+        if(empty(playerID)){
+            for(plid in loaded_players){
+                if(loaded_players[plid].player==playerName){
+                    playerID=loaded_players[plid].id
+                    break
+                }
+            }
+            if(empty(playerID)){
+                playerID=crc32(playerName)
+            }
+        }
+        if(loaded_players[playerID]==null)
+            loaded_players[playerID]={
+                player:playerName,
+                id:playerID,
+                color:currentLastColorNumber>=colors.length?"#000000":colors[currentLastColorNumber++],
+                visibility:true
+            }
+        else
+            loaded_players[playerID].player=playerName
+        contents = othersContent.trim().split('\n')
+        if(contents.length==1){
+            loaded_data.push({unique:unique,id:playerID,time:playerTime,content:othersContent.trim(),noTime:false})
+        }else{
+            var sequence=false
+            contents.forEach(content=>{
+                loaded_data.push({unique:unique,id:playerID,time:playerTime,content:content.trim(),noTime:sequence})
+                if(!sequence)
+                    sequence=true
+            })
+        }
+    }
+    currentLastColorNumber=0
+    loaded_data=[]
+    loaded_players={}
+    var logContent=document.getElementById("logContent").value.split('\n')
+    var othersContent = ""
+    var playerName=""
+    var playerID=""
+    var playerTime=""
+    var preferMode=-1
+    var unique=0
+    var decodeModes=[
+        function(unique){
+            var math=logLine.match(/^(.*?)?\((\d+)\) (\d+:\d+:\d+)$/i)//赵骰log格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName=math[1]
+                playerID=math[2]
+                playerTime=math[3]
+                if(playerName==null)
+                    playerName = playerID
+                othersContent=""
+                return true
+            }
+            return false
+        },function(unique){
+            var math=logLine.match(/^(.*?)(\(\d+\))? (((\d{4}-\d+-\d+ )|(\d{4}\/\d+\/\d+ ))?((\d+:\d+:\d+(\.0)?)|(\d+:\d+)))$/i)//溯洄、塔格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName=math[1]
+                playerID=math[2]
+                if(playerID==null){
+                    playerID=''
+                }else{
+                    playerID=playerID.substr(1,playerID.length-2)
+                }
+                playerTime=math[3]
+                othersContent=""
+                return true
+            }
+            return false
+        },function(unique){
+            math=logLine.match(/^(<\d{4}-\d{2}-\d{2} \d+:\d+:\d+\.0>    )?(\[.{1,50}?\]):(.*)$/i)//塔格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName=math[2]
+                playerID=''
+                playerTime=math[1]
+                if(playerTime==null){
+                    playerTime=''
+                }else{
+                    playerTime=playerTime.substr(1,playerTime.length-3)
+                }
+                othersContent=math[3]
+                return true
+            }
+            return false
+        },function(unique){
+            math=logLine.match(/^(\d{4}-\d{2}-\d{2} \d+:\d+:\d+ )(.*?)\((\d+)\)$/i)//PC QQ 聊天记录导出格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName=math[2]
+                playerID=math[3]
+                playerTime=math[1]
+                othersContent=''
+                return true
+            }
+            return false
+        },function(unique){
+            math=logLine.match(/^(((\d{4}-\d{2}-\d{2} )|(\d{4}\/\d+\/\d+ ))?((\d+:\d+:\d+(\.0)?)|(\d+:\d+)))?\s?<(.*?)>(.*)$/i)//本染色器，染色后的格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName=math[9]
+                playerTime=math[1]
+                othersContent=math[10]
+                return true
+            }
+            return false
+        },function(unique){
+            math=logLine.match(/^(.*?) (\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})$/i)//新版本PC QQ的染色格式
+            if(math!=null){
+                appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+                playerName = math[1]
+                playerTime = math[2]
+                othersContent = ''
+                return true
+            }
+            return false
+        }
+    ]
 log:for(var i in logContent){
-		logLine=logContent[i].trim()
-		if(preferMode==-1){
-			for(var tryMode in decodeModes){//遍历最佳正则表达式
-				if(decodeModes[tryMode](unique)){
-					unique++
-					preferMode = tryMode
-					continue log
-				}
-			}
-		}else{
-			if(decodeModes[preferMode](unique)){//使用最佳正则表达式
-				unique++
-				continue log
-			}
-		}
-		othersContent+=logLine+'\n'
-	}
-	if(othersContent.trim().length>0){
-		appendLogChild(unique,playerName,playerID,playerTime,othersContent)
-	}
+        logLine=logContent[i].trim()
+        if(preferMode==-1){
+            for(var tryMode in decodeModes){//遍历最佳正则表达式
+                if(decodeModes[tryMode](unique)){
+                    unique++
+                    preferMode = tryMode
+                    continue log
+                }
+            }
+        }else{
+            if(decodeModes[preferMode](unique)){//使用最佳正则表达式
+                unique++
+                continue log
+            }
+        }
+        othersContent+=logLine+'\n'
+    }
+    if(othersContent.trim().length>0){
+        appendLogChild(unique,playerName,playerID,playerTime,othersContent)
+    }
 }
 
 function startRenderLog(){
-	String.prototype.replaceAll = function(s1,s2){return this.replace(new RegExp(s1,"gm"),s2);}
-	String.prototype.matchAll = function(reg) {
-	  var res = []
-	  var match
-	  while(match = reg.exec(this)) {
-		res.push(match)
-	  }
-	  return res
-	}
-	var data=[]
-	var jump_uniqueID=-1
-	for(var i in loaded_data){
-		var newChild = Object.create(loaded_data[i])
-		if(viewImage){
-			newChild.content = HTMLEncode(newChild.content)
-			newChild.content = replaceImageRobotCodeToHTML(newChild.content)
-			if(newChild.content.replace(/<[^>]+>/g,"").trim()==""){
-				newChild.noDoc=true;
-			}else{
-				newChild.noDoc=false;
-			}
-		}
-		if(!viewCode){
-			newChild.content = newChild.content.replace(/\[CQ:.*\]|\[mirai:.*\]|\[@\d+\]|\[[a-z]+=.*\]|\[.*\.gif\]|^{"app":.*|\[图片\]/,"").trim()
-			if (newChild.content.length == 0) {
-				continue
-			}
-		}
-		if(!viewOB){
-			if (newChild.content.startsWith('(')||newChild.content.startsWith('（')) {
-				jump_uniqueID=newChild.unique
-			}
-			if(jump_uniqueID==newChild.unique)
-				continue
-		}
-		if(!viewCommand){
-			if (newChild.content.match(/^([\.。!！](\s+)?(ra|jrrp|st|team|rav|r|ri|ti|li|sc|ww|dx|nn|pc|log|set|setcoc|hp|san|mp|coc|name).*)/i)) {
-				continue
-			}
-		}
-		//将纯ID变为艾特具体昵称
-		Object.keys(loaded_players).forEach(key=>{
-			if(key!=loaded_players[key].player){
-				newChild.content=(newChild.content+" ").replaceAll(key+" ","@"+loaded_players[key].player+" ")
-			}
-		})
-		//http://gchat.qpic.cn/
+    String.prototype.replaceAll = function(s1,s2){return this.replace(new RegExp(s1,"gm"),s2);}
+    String.prototype.matchAll = function(reg) {
+      var res = []
+      var match
+      while(match = reg.exec(this)) {
+        res.push(match)
+      }
+      return res
+    }
+    var data=[]
+    var jump_uniqueID=-1
+    for(var i in loaded_data){
+        var newChild = Object.create(loaded_data[i])
+        if(viewImage){
+            newChild.content = HTMLEncode(newChild.content)
+            newChild.content = replaceImageRobotCodeToHTML(newChild.content)
+            if(newChild.content.replace(/<[^>]+>/g,"").trim()==""){
+                newChild.noDoc=true;
+            }else{
+                newChild.noDoc=false;
+            }
+        }
+        if(!viewCode){
+            newChild.content = newChild.content.replace(/\[CQ:.*\]|\[mirai:.*\]|\[@\d+\]|\[[a-z]+=.*\]|\[.*\.gif\]|^{"app":.*|\[图片\]/,"").trim()
+            if (newChild.content.length == 0) {
+                continue
+            }
+        }
+        if(!viewOB){
+            if (newChild.content.startsWith('(')||newChild.content.startsWith('（')) {
+                jump_uniqueID=newChild.unique
+            }
+            if(jump_uniqueID==newChild.unique)
+                continue
+        }
+        if(!viewCommand){
+            if (newChild.content.match(/^([\.。!！](\s+)?(ra|jrrp|st|team|rav|r|ri|ti|li|sc|ww|dx|nn|pc|log|set|setcoc|hp|san|mp|coc|name).*)/i)) {
+                continue
+            }
+        }
+        //将纯ID变为艾特具体昵称
+        Object.keys(loaded_players).forEach(key=>{
+            if(key!=loaded_players[key].player){
+                newChild.content=(newChild.content+" ").replaceAll(key+" ","@"+loaded_players[key].player+" ")
+            }
+        })
+        //http://gchat.qpic.cn/
 
-		data.push(newChild)
-	}
+        data.push(newChild)
+    }
 
-	// 模板渲染
-	document.getElementById('div_log_content').innerHTML=template(document.getElementById('template_colored_preview').innerHTML,{logData:data,playerData:loaded_players});
-	function addCSS(cssText){
-		var style = document.getElementById('dynamicLogStyle')
-		style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用
-		try{
-			style.innerText = cssText;
-		}catch(e){
-	
-		}
-	}
-	var cssText = '.suitableImage {max-height:300px;max-width:80%;overflow:hidden;position:relative;z-index:0}'
-	for(var i in loaded_players){
-		var player=loaded_players[i]
-		cssText +='.log_child_id_'+player.id+'{ color: '+player.color+' ; '+(!player.visibility?'display:none ':'')+'}'
-	}
-	if(!viewTime){
-		cssText +='.log_child_time{display:none;}'
-	}
-	if(viewImage){
-		setImageEvent()
-	}
-	//使用样式进行染色
-	addCSS(cssText)
-	switch_to_mode()
-	//染色完毕，关闭按钮
-	setStartRenderingButtonEnable(false)
+    // 模板渲染
+    document.getElementById('div_log_content').innerHTML=template(document.getElementById('template_colored_preview').innerHTML,{logData:data,playerData:loaded_players});
+    function addCSS(cssText){
+        var style = document.getElementById('dynamicLogStyle')
+        style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用
+        try{
+            style.innerText = cssText;
+        }catch(e){
+    
+        }
+    }
+    var cssText = '.suitableImage {max-height:300px;max-width:80%;overflow:hidden;position:relative;z-index:0}'
+    for(var i in loaded_players){
+        var player=loaded_players[i]
+        cssText +='.log_child_id_'+player.id+'{ color: '+player.color+' ; '+(!player.visibility?'display:none ':'')+'}'
+    }
+    if(!viewTime){
+        cssText +='.log_child_time{display:none;}'
+    }
+    if(viewImage){
+        setImageEvent()
+    }
+    //使用样式进行染色
+    addCSS(cssText)
+    switch_to_mode()
+    //染色完毕，关闭按钮
+    setStartRenderingButtonEnable(false)
 }
 function setImageEvent(){
-	$("img.lazy").lazyload({
-		effect : "fadeIn",
-		threshold : document.documentElement.clientHeight+180,
-	});
-	$(".suitableImage").each(function(){
-		$(this).one("startLazyload",function(){
-			$(this).blowup({
-				background : "#FCEBB6"
-			})
-		})
-	});
+    $("img.lazy").lazyload({
+        effect : "fadeIn",
+        threshold : document.documentElement.clientHeight+180,
+    });
+    $(".suitableImage").each(function(){
+        $(this).one("startLazyload",function(){
+            $(this).blowup({
+                background : "#FCEBB6"
+            })
+        })
+    });
 }
 function startRenderPlayerList(){
-	// 模板渲染
-	var template1 = document.getElementById('template_player_list').innerHTML;
-	document.getElementById('div_player_list').innerHTML=template(template1,{playerData:loaded_players});
+    // 模板渲染
+    var template1 = document.getElementById('template_player_list').innerHTML;
+    document.getElementById('div_player_list').innerHTML=template(template1,{playerData:loaded_players});
 }
 function switch_to_code(){
-	mode_code=true
-	switch_to_mode()
+    mode_code=true
+    switch_to_mode()
 }
 function switch_to_colored_view(){
-	mode_code=false
-	switch_to_mode()
+    mode_code=false
+    switch_to_mode()
 }
 function switch_to_mode(){
-	setElementVisibility('div_log_view',!mode_code)
-	setElementVisibility('div_log_code',mode_code)
+    setElementVisibility('div_log_view',!mode_code)
+    setElementVisibility('div_log_code',mode_code)
 }
 function init(){
-	if(editedContent && !confirm("你可能编辑了染色文本，如果重新染色，你会丢失关于【染色区域内的文本修改】，若不想丢失修改，【请取消】，并备份你的染色结果到本地磁碟，下次直接进行二次染色\n——是否【重新染色】？")){
-		return;
-	}
-	editedContent = false
-	if(startRenderLogTimer != -1){
-		clearTimeout(startRenderLogTimer)
-	}
-	showBg("正在进行染色计算中...");
-	setTimeout(function(){
-		if(needRedecode){
-			startDecodeLog()//开始解码log文本
-			startRenderPlayerList()//开始显示player列表
-		}
-		startRenderLog()//开始插入css进行动态染色
-		switch_to_colored_view()
-		closeBg();
-	},20)
+    if(editedContent && !confirm("你可能编辑了染色文本，如果重新染色，你会丢失关于【染色区域内的文本修改】，若不想丢失修改，【请取消】，并备份你的染色结果到本地磁碟，下次直接进行二次染色\n——是否【重新染色】？")){
+        return;
+    }
+    editedContent = false
+    if(startRenderLogTimer != -1){
+        clearTimeout(startRenderLogTimer)
+    }
+    showBg("正在进行染色计算中...");
+    setTimeout(function(){
+        if(needRedecode){
+            startDecodeLog()//开始解码log文本
+            startRenderPlayerList()//开始显示player列表
+        }
+        startRenderLog()//开始插入css进行动态染色
+        switch_to_colored_view()
+        closeBg();
+    },20)
 }
 function FUCK_Domestic_BROWSER(){
-	const storageItem = "domesticBrowserNoticed";
-	if(!localStorage.getItem(storageItem)){
-		localStorage.setItem(storageItem,true);
-		alert('请勿使用移动端的国产浏览器，因仅有部分浏览器支持blob流，可能不支持下载，建议电脑下载或手机使用 Chrome 或 Firefox 浏览器。')
-	}
+    const storageItem = "domesticBrowserNoticed";
+    if(!localStorage.getItem(storageItem)){
+        localStorage.setItem(storageItem,true);
+        alert('请勿使用移动端的国产浏览器，因仅有部分浏览器支持blob流，可能不支持下载，建议电脑下载或手机使用 Chrome 或 Firefox 浏览器。')
+    }
 }
 function FUCK_SB_Domestic_BROWSER(){
-	if (navigator.userAgent.indexOf("QQ") > -1 || navigator.userAgent.indexOf("MicroMessenger") > -1) {
-		alert('发生严重系统错误！安全系统检测到非法浏览器，请使用 Chrome 或 Firefox 浏览器 进行下载。')
-		return true
-	}
-	return false
+    if (navigator.userAgent.indexOf("QQ") > -1 || navigator.userAgent.indexOf("MicroMessenger") > -1) {
+        alert('发生严重系统错误！安全系统检测到非法浏览器，请使用 Chrome 或 Firefox 浏览器 进行下载。')
+        return true
+    }
+    return false
 }
 function exportDOC(){
-	FUCK_Domestic_BROWSER()
-	if(FUCK_SB_Domestic_BROWSER()) return
-	
-	if(needRedecode){
-		alert('请粘贴日志到输入框，然后点击右下角完成染色进程后保存染色文件')
-	}else{
-		//这是另一个在输出阶段剔除时间元素的方案，目前暂时不采纳
-		//var view = $("#div_log_view").clone(); // clone防止页面被修改
-		//if (!viewTime) {
-		//	view.find('.log_child_time').remove();
-		//}
-		var view = $("#div_log_view")
-		var name=logName
-		if(getFileExt(name)!='doc')
-			name+=".doc"
-		view.wordExport(name,document.getElementById('dynamicLogStyle').innerText);
-	}
+    FUCK_Domestic_BROWSER()
+    if(FUCK_SB_Domestic_BROWSER()) return
+    
+    if(needRedecode){
+        alert('请粘贴日志到输入框，然后点击右下角完成染色进程后保存染色文件')
+    }else{
+        //这是另一个在输出阶段剔除时间元素的方案，目前暂时不采纳
+        //var view = $("#div_log_view").clone(); // clone防止页面被修改
+        //if (!viewTime) {
+        //    view.find('.log_child_time').remove();
+        //}
+        var view = $("#div_log_view")
+        var name=logName
+        if(getFileExt(name)!='doc')
+            name+=".doc"
+        view.wordExport(name,document.getElementById('dynamicLogStyle').innerText);
+    }
 }
 function replaceImageRobotCodeToHTML(content){
-	function getImage(code){
-		return "https://gchat.qpic.cn/gchatpic_new/0/0-0-"+escape(code.replaceAll('-',''))+"/0?term=2";
-	}
-	function getHtml(oricode,url){
-		oricode = HTMLEncode(oricode);
-		oricode = oricode.replace("[","&#91;");
-		return "<div style='text-indent:4em;'><a class='suitableImageLink' target='_blank' href='"+url+"'><img alt='"+oricode+"' class='suitableImage lazy' data-original='"+url+"'></a></div>";
-	}
-	var imageMatch = [...content.matchAll(/\[mirai:image:\{(.*?)\}\.(.*?)\]/g)]
-	for(var j=0;j<imageMatch.length;j++){
-		content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],getImage(imageMatch[j][1])))
-	}
-	imageMatch = [...content.matchAll(/\[pic={(.*?)}\.(.*?)(,.*?,.*?)?\]/g)]
-	for(var j=0;j<imageMatch.length;j++){
-		content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],getImage(imageMatch[j][1])))
-	}
-	imageMatch = [...content.matchAll(/\[CQ:image,file=(.*?)\.image,url=(.*?),subType=(.*?)\]/g)]
-	for(var j=0;j<imageMatch.length;j++){
-		content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],imageMatch[j][2]))
-	}
-	return content;
+    function getImage(code){
+        return "https://gchat.qpic.cn/gchatpic_new/0/0-0-"+escape(code.replaceAll('-',''))+"/0?term=2";
+    }
+    function getHtml(oricode,url){
+        oricode = HTMLEncode(oricode);
+        oricode = oricode.replace("[","&#91;");
+        return "<div style='text-indent:4em;'><a class='suitableImageLink' target='_blank' href='"+url+"'><img alt='"+oricode+"' class='suitableImage lazy' data-original='"+url+"'></a></div>";
+    }
+    var imageMatch = [...content.matchAll(/\[mirai:image:\{(.*?)\}\.(.*?)\]/g)]
+    for(var j=0;j<imageMatch.length;j++){
+        content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],getImage(imageMatch[j][1])))
+    }
+    imageMatch = [...content.matchAll(/\[pic={(.*?)}\.(.*?)(,.*?,.*?)?\]/g)]
+    for(var j=0;j<imageMatch.length;j++){
+        content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],getImage(imageMatch[j][1])))
+    }
+    imageMatch = [...content.matchAll(/\[CQ:image,file=(.*?)\.image,url=(.*?),subType=(.*?)\]/g)]
+    for(var j=0;j<imageMatch.length;j++){
+        content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],imageMatch[j][2]))
+    }
+    return content;
 }
 function exportTXT(){
-	FUCK_Domestic_BROWSER()
-	if(FUCK_SB_Domestic_BROWSER()) return
-	function fakeClick(obj) {
-	   var ev = document.createEvent("MouseEvents");
-	   ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-	   obj.dispatchEvent(ev);
-	}
-	function exportRaw(name, data) {
-		 if(getFileExt(name)!='txt')
-			name+=".txt"
-		 var urlObject = window.URL || window.webkitURL || window;
-		 var export_blob = new Blob([data]);
-		 var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
-		 save_link.href = urlObject.createObjectURL(export_blob);
-		 save_link.download = name;
-		 fakeClick(save_link);
-	}
-	exportRaw(logName,document.getElementById('logContent').value)
+    FUCK_Domestic_BROWSER()
+    if(FUCK_SB_Domestic_BROWSER()) return
+    function fakeClick(obj) {
+       var ev = document.createEvent("MouseEvents");
+       ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+       obj.dispatchEvent(ev);
+    }
+    function exportRaw(name, data) {
+         if(getFileExt(name)!='txt')
+            name+=".txt"
+         var urlObject = window.URL || window.webkitURL || window;
+         var export_blob = new Blob([data]);
+         var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+         save_link.href = urlObject.createObjectURL(export_blob);
+         save_link.download = name;
+         fakeClick(save_link);
+    }
+    exportRaw(logName,document.getElementById('logContent').value)
 }
 
 //沉浸模式/普通模式
 function setEmergedMode(v){
-	if(v==null){
-		$("#control").toggle()
-	}else{
-		if(v){
-			$("#control").hide()
-			
-		}else{
-			$("#control").show()
-		}
-	}
-	loadLazyLoad()
+    if(v==null){
+        $("#control").toggle()
+    }else{
+        if(v){
+            $("#control").hide()
+            
+        }else{
+            $("#control").show()
+        }
+    }
+    loadLazyLoad()
 }
 //F9 进入沉浸模式 或者执行 setEmergedMode(true)
 document.onkeydown = function(){
-	if(event.keyCode==120){
-		setEmergedMode(null)
-	}
-	return true
+    if(event.keyCode==120){
+        setEmergedMode(null)
+    }
+    return true
 }
 //init()
 </script>
@@ -1750,212 +1750,212 @@ String.prototype.byteLength = function() {
     return byteLen;
 }
 function loadRemoteLogFile(file) {
-	loadRemoteLogFile('', file)
+    loadRemoteLogFile('', file)
 }
 function loadRemoteLogFile(server, file) {
-	if(isLoading){
-		return;
-	}
-	const errMsg = "[错误]联网失败，请刷新网页或稍后重试，或联系QQ 357826834 获取日志"
-	var fileInfoUrl = server + "logReader.php?m=metaData&id=" + file + "&r=" + Math.random();
-	var downloadUrl = server + "logReader.php?m=rawData&id=" + file + "&r=" + Math.random();
-	var showtime = function() {
-		if (leftTime > 0) {
-			leftd = Math.floor(leftTime / (60 * 60 * 24)),
-			//计算天数
-			lefth = Math.floor(leftTime / (60 * 60) % 24),
-			//计算小时数
-			leftm = Math.floor(leftTime / (60) % 60),
-			//计算分钟数
-			lefts = Math.floor(leftTime % 60); //计算秒数
-			document.getElementById("leftTimeShow").innerHTML = "日志文件被承诺在<font color='red'>[" + leftd + "天" + lefth + "小时" + leftm + "分钟" + lefts + "秒]</font>内不会被删除，但还是建议及时存储和备份。"; //返回倒计时的字符串
-		} else {
-			document.getElementById("leftTimeShow").innerHTML = "<font color='red'>日志文件存放时间过长，该文件可能将在未来被清理，请及时下载和备份</font>"
-		}
-	}
-	
-	var package=(function(){
-		const maxAttempts=30;
-		var attempts;
-		var loaded=false;
-		var timeID=-1;
-		var receivedMetaData=null;
-		doAjaxRequest();
-		function doAjaxRequest() {
-			attempts = 0;
-			loaded = false;
-			if(timeID!=-1){
-				clearTimeout(timeID);
-			}
-			doAjaxRequestLoop();
-		}
-		function doAjaxRequestLoopDelay() {
-			if(timeID==-1){
-				attempts += 1;
-			}else{
-				clearTimeout(timeID);
-			}
-			if (attempts > maxAttempts) {
-				showBg(errMsg);
-				isLoading=false;
-				return;
-			}else{
-				if(attempts>1){
-					showBg("Trying again...请等待 :"+attempts+"/"+maxAttempts);
-				}
-			}
-			timeID=setTimeout(doAjaxRequestLoop,5000);
-		}
-		function doAjaxRequestLoop() {
-			if(loaded){
-				return;
-			}
-			step_1();
-			timeID = -1;
-		}
-		function step_1(){
-			showBg("[1/2]正在搜索文件，请稍后....");
-			if(receivedMetaData==null){
-				$.ajax({
-					url: fileInfoUrl,
-					type: "get",
-					dataType: "json",
-					timeout:10000,
-					success: function(data) {
-						if(data == undefined){
-							doAjaxRequestLoopDelay();
-						}else{
-							attempts = 0;
-							receivedMetaData = data;
-							step_2(receivedMetaData);
-						}
-					}
-				}).fail(function(result, result1, result2) {
-					doAjaxRequestLoopDelay();
-				});
-			}else{
-				step_2(receivedMetaData);
-			}
-		}
-		function step_2(data){
-			showBg("[2/2]发现LOG，正在下载文件...");
-			var nowdate = parseInt(new Date() / 1000);
-			if (data.code == 0) {
-				var crc32FromServer=data.crc32;
-				if(data.redirectDownloadUrl){
-					downloadUrl=data.redirectDownloadUrl;//重定向下载地址
-				}
-				liveTime = data.live;
-				var xhr = new XMLHttpRequest();
-				xhr.open( "GET", downloadUrl, true);
-				xhr.addEventListener('progress',
-				function(event) {
-					const size = event.lengthComputable?event.total:data.size //获取文件总大小
-					setBgProcess((((event.target.response.byteLength()) / size) * 100).toFixed(3))
-				},
-				false);
-				xhr.addEventListener('loadend',
-				function(event) {
-					var data = event.target.response;
-					if(data!='' && (crc32FromServer==0 || crc32FromServer==crc32(data))){//crc完整性校验成功
-						loaded=true
-						document.getElementById("logContent").value = data;
-						init()
-					}else{
-						showBg("下载log遭遇网络问题，请稍后重试、或者让其他人打开、或者科学上网");
-						isLoading=false;
-					}
-				});
-				xhr.addEventListener('error',
-				function(event) {
-					doAjaxRequestLoopDelay();
-				});
-				xhr.ontimeout = function(event){
-				　　doAjaxRequestLoopDelay();
-				}
-				xhr.timeout = 10000;
-				xhr.send();
-				createTime = data.createTime;
-				logName = data.fileName;
-				leftTime = liveTime - (nowdate - createTime);
-				if (leftTimeInterval != 0) {
-					clearInterval(leftTimeInterval);
-				}
-				if(liveTime>0){
-					leftTimeInterval = setInterval(function() {
-						showtime();
-						leftTime--;
-					},
-					1000); //反复执行函数本身
-				}
-			} else {
-				showBg(data.content);
-			}
-		}
-	});
-	package();
+    if(isLoading){
+        return;
+    }
+    const errMsg = "[错误]联网失败，请刷新网页或稍后重试，或联系QQ 357826834 获取日志"
+    var fileInfoUrl = server + "logReader.php?m=metaData&id=" + file + "&r=" + Math.random();
+    var downloadUrl = server + "logReader.php?m=rawData&id=" + file + "&r=" + Math.random();
+    var showtime = function() {
+        if (leftTime > 0) {
+            leftd = Math.floor(leftTime / (60 * 60 * 24)),
+            //计算天数
+            lefth = Math.floor(leftTime / (60 * 60) % 24),
+            //计算小时数
+            leftm = Math.floor(leftTime / (60) % 60),
+            //计算分钟数
+            lefts = Math.floor(leftTime % 60); //计算秒数
+            document.getElementById("leftTimeShow").innerHTML = "日志文件被承诺在<font color='red'>[" + leftd + "天" + lefth + "小时" + leftm + "分钟" + lefts + "秒]</font>内不会被删除，但还是建议及时存储和备份。"; //返回倒计时的字符串
+        } else {
+            document.getElementById("leftTimeShow").innerHTML = "<font color='red'>日志文件存放时间过长，该文件可能将在未来被清理，请及时下载和备份</font>"
+        }
+    }
+    
+    var package=(function(){
+        const maxAttempts=30;
+        var attempts;
+        var loaded=false;
+        var timeID=-1;
+        var receivedMetaData=null;
+        doAjaxRequest();
+        function doAjaxRequest() {
+            attempts = 0;
+            loaded = false;
+            if(timeID!=-1){
+                clearTimeout(timeID);
+            }
+            doAjaxRequestLoop();
+        }
+        function doAjaxRequestLoopDelay() {
+            if(timeID==-1){
+                attempts += 1;
+            }else{
+                clearTimeout(timeID);
+            }
+            if (attempts > maxAttempts) {
+                showBg(errMsg);
+                isLoading=false;
+                return;
+            }else{
+                if(attempts>1){
+                    showBg("Trying again...请等待 :"+attempts+"/"+maxAttempts);
+                }
+            }
+            timeID=setTimeout(doAjaxRequestLoop,5000);
+        }
+        function doAjaxRequestLoop() {
+            if(loaded){
+                return;
+            }
+            step_1();
+            timeID = -1;
+        }
+        function step_1(){
+            showBg("[1/2]正在搜索文件，请稍后....");
+            if(receivedMetaData==null){
+                $.ajax({
+                    url: fileInfoUrl,
+                    type: "get",
+                    dataType: "json",
+                    timeout:10000,
+                    success: function(data) {
+                        if(data == undefined){
+                            doAjaxRequestLoopDelay();
+                        }else{
+                            attempts = 0;
+                            receivedMetaData = data;
+                            step_2(receivedMetaData);
+                        }
+                    }
+                }).fail(function(result, result1, result2) {
+                    doAjaxRequestLoopDelay();
+                });
+            }else{
+                step_2(receivedMetaData);
+            }
+        }
+        function step_2(data){
+            showBg("[2/2]发现LOG，正在下载文件...");
+            var nowdate = parseInt(new Date() / 1000);
+            if (data.code == 0) {
+                var crc32FromServer=data.crc32;
+                if(data.redirectDownloadUrl){
+                    downloadUrl=data.redirectDownloadUrl;//重定向下载地址
+                }
+                liveTime = data.live;
+                var xhr = new XMLHttpRequest();
+                xhr.open( "GET", downloadUrl, true);
+                xhr.addEventListener('progress',
+                function(event) {
+                    const size = event.lengthComputable?event.total:data.size //获取文件总大小
+                    setBgProcess((((event.target.response.byteLength()) / size) * 100).toFixed(3))
+                },
+                false);
+                xhr.addEventListener('loadend',
+                function(event) {
+                    var data = event.target.response;
+                    if(data!='' && (crc32FromServer==0 || crc32FromServer==crc32(data))){//crc完整性校验成功
+                        loaded=true
+                        document.getElementById("logContent").value = data;
+                        init()
+                    }else{
+                        showBg("下载log遭遇网络问题，请稍后重试、或者让其他人打开、或者科学上网");
+                        isLoading=false;
+                    }
+                });
+                xhr.addEventListener('error',
+                function(event) {
+                    doAjaxRequestLoopDelay();
+                });
+                xhr.ontimeout = function(event){
+                　　doAjaxRequestLoopDelay();
+                }
+                xhr.timeout = 10000;
+                xhr.send();
+                createTime = data.createTime;
+                logName = data.fileName;
+                leftTime = liveTime - (nowdate - createTime);
+                if (leftTimeInterval != 0) {
+                    clearInterval(leftTimeInterval);
+                }
+                if(liveTime>0){
+                    leftTimeInterval = setInterval(function() {
+                        showtime();
+                        leftTime--;
+                    },
+                    1000); //反复执行函数本身
+                }
+            } else {
+                showBg(data.content);
+            }
+        }
+    });
+    package();
 }
 function allSelect(e){
-	hideThedeleteBtn(e)
-	if (document.body.createTextRange) {
-		var range = document.body.createTextRange();
-		range.moveToElementText(e);
-		range.select();
-	} else if (window.getSelection) {
-		var selection = window.getSelection();
-		var range = document.createRange();
-		range.selectNodeContents(e);
-		selection.removeAllRanges();
-		selection.addRange(range);
-	}
-	document.execCommand('copy');
-	alert('复制成功')
+    hideThedeleteBtn(e)
+    if (document.body.createTextRange) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(e);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(e);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand('copy');
+    alert('复制成功')
 }
 function getFileExt(filename) {
-	var index = filename.lastIndexOf(".");
-	if (index == -1) return ''
-	var suffix = filename.substr(index + 1);
+    var index = filename.lastIndexOf(".");
+    if (index == -1) return ''
+    var suffix = filename.substr(index + 1);
 }
 function getQueryVariable(variable) {
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split("=");
-		if (pair[0] == variable) {
-			return decodeURI(pair[1]);
-		}
-	}
-	return (false);
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return decodeURI(pair[1]);
+        }
+    }
+    return (false);
 }
 function autoRollToBottom(){
     var number = 0; //控制结束累加器
     var length = 0; //控制每次翻滚长度
     var time = setInterval(function(){
-		var height = document.body.clientHeight;
-		if(length >= height){
-			clearInterval(time);
-			scroll(0,0);
-		} else {
-			length += 100;
-			document.documentElement.scrollTop = length;
-		}
-	},100); //每隔500MS翻滚一次
+        var height = document.body.clientHeight;
+        if(length >= height){
+            clearInterval(time);
+            scroll(0,0);
+        } else {
+            length += 100;
+            document.documentElement.scrollTop = length;
+        }
+    },100); //每隔500MS翻滚一次
 }
 function F5() {
-	var remoteCode = location.hash;
-	if (remoteCode != '') {
-		if (remoteCode.startsWith('#')) {
-			remoteCode = remoteCode.substr(1) 
-			var b=remoteCode.indexOf('-');
-			if (b!=-1) {
-				var sid=remoteCode.substring(0,b);
-				var lid=remoteCode.substring(b+1,remoteCode.length);
-				loadRemoteLogFile(serverList[parseInt(sid)], lid) //解析格式为 https://染色器地址/#ID-CODE
-			}
-		} else {
-			loadRemoteLogFile('', remoteCode)
-		}
-	}
+    var remoteCode = location.hash;
+    if (remoteCode != '') {
+        if (remoteCode.startsWith('#')) {
+            remoteCode = remoteCode.substr(1) 
+            var b=remoteCode.indexOf('-');
+            if (b!=-1) {
+                var sid=remoteCode.substring(0,b);
+                var lid=remoteCode.substring(b+1,remoteCode.length);
+                loadRemoteLogFile(serverList[parseInt(sid)], lid) //解析格式为 https://染色器地址/#ID-CODE
+            }
+        } else {
+            loadRemoteLogFile('', remoteCode)
+        }
+    }
 }
 var serverList = ['https://s02.trpgbot.com/s/','https://s03.trpgbot.com/models/','https://api.dice.center/dicelogger/']
 var createTime = 0 //文件上传时间
@@ -1964,9 +1964,9 @@ var liveTime = 864000 //文件可以存活的时间
 var leftTimeInterval = 0 
 F5() 
 window.addEventListener('hashchange',function(event) {
-	needRedecode = true 
-	needRerender = true 
-	F5()
+    needRedecode = true 
+    needRerender = true 
+    F5()
 })
 </script>
 <script>
