@@ -1230,7 +1230,9 @@ function closeBg() {
 			<% var hiddenTimeTextsEmpty = logData[i].noTime?"color:white;":"" %>
 			<% var logControlStyle = "log_child_id_"+logData[i].id+(logData[i].noDoc?' noDoc':'') %>
 			<div class="<%=logControlStyle%>">
-			<span class="log_child_time" style="<%=hiddenTimeTextsSilver%>"><%= logData[i].time %></span>
+			<% if (viewTime) { %>
+				<span class="log_child_time" style="<%=hiddenTimeTextsSilver%>"><%= logData[i].time %></span>
+			<% } %>
 			<span class="log_child_content<%= logData[i].ob?' log_child_ob':''%>">
 				<span style="<%=hiddenTimeTextsEmpty%>">&lt;<%= pl.player %>&gt;</span><span contenteditable="true" onblur="_content_on_onblur(this)" onfocus="_content_on_onfocus(this)"><%:= logData[i].content %></span>
 			</span><br>
@@ -1240,7 +1242,10 @@ function closeBg() {
 	<div id="div_log_code" role="tabpanel" style="background-color:#fff">
 		<% for(var i = 0;i < logData.length;i++){ %>
 			<% var pl=playerData[logData[i].id] %>
-			<span class="log_child_time">[color=silver]<%= logData[i].time %>[/color]</span> [color=<%= pl.color %>]&lt;<%= pl.player %>&gt; <%= logData[i].content %>[/color]<br/>
+				<% if (viewTime) { %>
+					<span class="log_child_time">[color=silver]<%= logData[i].time %>[/color]</span>
+				<% } %>
+				[color=<%= pl.color %>]&lt;<%= pl.player %>&gt; <%= logData[i].content %>[/color]<br/>
 		<% } %>
 	</div>
 </script>
@@ -1314,7 +1319,8 @@ function _log_text_changing(){
 function _on_switch_changed(e){//开关被改变
 	if(e.id=='visibility_TIME'){
 		viewTime=e.checked
-		startRenderLog(false) //更新CSS应用渲染
+		//startRenderLog(false) //更新CSS应用渲染
+		setStartRenderingButtonEnable(true)//改用重新渲染
 	}else if(e.id=='visibility_CODE'){
 		viewCode=e.checked
 		setStartRenderingButtonEnable(true)
@@ -1646,10 +1652,15 @@ function exportDOC(){
 	FUCK_Domestic_BROWSER()
 	if(FUCK_SB_Domestic_BROWSER()) return
 	
-	var view=$("#div_log_view")
 	if(needRedecode){
 		alert('请粘贴日志到输入框，然后点击右下角完成染色进程后保存染色文件')
 	}else{
+		//这是另一个在输出阶段剔除时间元素的方案，目前暂时不采纳
+		//var view = $("#div_log_view").clone(); // clone防止页面被修改
+		//if (!viewTime) {
+		//	view.find('.log_child_time').remove();
+		//}
+		var view = $("#div_log_view")
 		var name=logName
 		if(getFileExt(name)!='doc')
 			name+=".doc"
