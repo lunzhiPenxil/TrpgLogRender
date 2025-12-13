@@ -1756,7 +1756,7 @@ function loadRemoteLogFile(server, file) {
     if(isLoading){
         return;
     }
-    const errMsg = "[错误]联网失败，请刷新网页或稍后重试，或联系QQ 357826834 获取日志"
+    const errMsg = "[错误]联网失败，请刷新网页或稍后重试，或加入青果核心官方群获取日志"
     var fileInfoUrl = server + "logReader.php?m=metaData&id=" + file + "&r=" + Math.random();
     var downloadUrl = server + "logReader.php?m=rawData&id=" + file + "&r=" + Math.random();
     var showtime = function() {
