@@ -1873,7 +1873,7 @@ function loadRemoteLogFile(server, file) {
                 xhr.ontimeout = function(event){
                 　　doAjaxRequestLoopDelay();
                 }
-                xhr.timeout = Math.ceil(data.size / 1024 / 64) * 1000;
+                xhr.timeout = Math.min(10000, Math.ceil(data.size / 1024 / 64) * 1000);
                 xhr.send();
                 createTime = data.createTime;
                 logName = data.fileName;
