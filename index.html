@@ -500,9 +500,12 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
                 -ms-user-select: none;
                 user-select: none;
             }
-
-            .m-no-select .m-no-select-flex {
-                padding: 10px;
+        </style>
+        <style>
+            .select-flex {
+                text-align: center;
+                width: 100%;
+                padding-top: 10px;
                 padding-bottom: 5px;
                 display: flex;
                 flex-flow: row;
@@ -513,8 +516,9 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
                 gap: 10px;
             }
 
-            .m-no-select .m-no-select-flex .m-no-select-box {
+            .select-flex .select-flex-box {
                 min-width: 64px;
+                align-content: center;
             }
         </style>
         <style>
@@ -1196,8 +1200,6 @@ function closeBg() {
         <div align="center" class="STYLE2">
         <p>v1.0 by 仑质</p>
     </div>
-    <p align="center" class="STYLE3">下载文件时请使用标准“Firfox”或“Chrome”浏览器，其他国产浏览器可能导致下载失败。</p>
-    <p align="center" class="STYLE3">若要另存为带图log，请先<a href="javascript:autoRollToBottom()">点击这里</a>从上到下完整浏览一遍网页，确保图片全部加载完毕后，按下F9进入沉浸模式，右键另存为，格式为<strong>“网页，全部(*.htm;*.html)或网页（单个文件）(*.mhtml)”</strong>即可带图保存,千万不要选“仅网页”</p>
     <h4 align="center" id="leftTimeShow"></h4>
     <div align="center">
         <div id="normalFunction">
@@ -1257,28 +1259,26 @@ function closeBg() {
             </tbody>
         </table>
     </script>
-    <div align="center" class="m-no-select">
-        <div class="m-no-select-flex" style="background-color: transparent;">
-            <div class="m-no-select-box">
-                <input type="checkbox" id="visibility_IMAGE" class="regular-checkbox" onChange="_on_switch_changed(this)">
-                <label for="visibility_IMAGE">在线图片</label>
-            </div>
-            <div class="m-no-select-box">
-                <input type="checkbox" id="visibility_CODE" class="regular-checkbox" onChange="_on_switch_changed(this)">
-                <label for="visibility_CODE">框架代码</label>
-            </div>
-            <div class="m-no-select-box">
-                <input type="checkbox" id="visibility_OB" class="regular-checkbox" onChange="_on_switch_changed(this)">
-                <label for="visibility_OB">场外发言</label>
-            </div>
-            <div class="m-no-select-box">
-                <input type="checkbox" id="visibility_TIME" class="regular-checkbox" onChange="_on_switch_changed(this)">
-                <label for="visibility_TIME">发言时间</label>
-            </div>
-            <div class="m-no-select-box">
-                <input type="checkbox" id="visibility_COMMAND" class="regular-checkbox" onChange="_on_switch_changed(this)">
-                <label for="visibility_COMMAND">骰指令</label>
-            </div>
+    <div align="center" class="select-flex" style="background-color: transparent;">
+        <div class="select-flex-box">
+            <input type="checkbox" id="visibility_IMAGE" class="regular-checkbox" onChange="_on_switch_changed(this)">
+            <label for="visibility_IMAGE">在线图片</label>
+        </div>
+        <div class="select-flex-box">
+            <input type="checkbox" id="visibility_CODE" class="regular-checkbox" onChange="_on_switch_changed(this)">
+            <label for="visibility_CODE">框架代码</label>
+        </div>
+        <div class="select-flex-box">
+            <input type="checkbox" id="visibility_OB" class="regular-checkbox" onChange="_on_switch_changed(this)">
+            <label for="visibility_OB">场外发言</label>
+        </div>
+        <div class="select-flex-box">
+            <input type="checkbox" id="visibility_TIME" class="regular-checkbox" onChange="_on_switch_changed(this)">
+            <label for="visibility_TIME">发言时间</label>
+        </div>
+        <div class="select-flex-box">
+            <input type="checkbox" id="visibility_COMMAND" class="regular-checkbox" onChange="_on_switch_changed(this)">
+            <label for="visibility_COMMAND">骰指令</label>
         </div>
     </div>
     <div align="center">
