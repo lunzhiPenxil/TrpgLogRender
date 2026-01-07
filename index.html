@@ -1768,6 +1768,14 @@ function closeBg() {
         for(var j=0;j<imageMatch.length;j++){
             content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],imageMatch[j][2]))
         }
+        imageMatch = [...content.matchAll(/\[CQ:image(?:,.+)*,file=(.*?)(?:\.image|\.jpg|\.png|\.gif)(?:,.+)*,url=(.*?)(?:,.+)*\]/g)]
+        for(var j=0;j<imageMatch.length;j++){
+            content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],imageMatch[j][2]))
+        }
+        imageMatch = [...content.matchAll(/\[CQ:mface(?:,.+)*,summary=(.*?)(?:,.+)*,url=(.*?)(?:,.+)*\]/g)]
+        for(var j=0;j<imageMatch.length;j++){
+            content=content.replace(imageMatch[j][0],getHtml(imageMatch[j][0],imageMatch[j][2]))
+        }
         return content;
     }
     function exportTXT(){
