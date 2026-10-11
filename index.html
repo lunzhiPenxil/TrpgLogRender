@@ -1165,6 +1165,57 @@ function closeBg() {
 
 </script>
 
+
+
+<!-- 优化：玩家列表“可视”开关 -->
+<style>
+/* 玩家列表 · 可视开关：方角滑动开关 */
+#div_player_list .regular-checkbox + label {
+  display: inline-block !important;
+  position: relative !important;
+  width: 40px !important;
+  height: 20px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #cfcfcf !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+#div_player_list .regular-checkbox + label::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: #fff !important;
+  border-radius: 0 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.18) !important;
+  font-size: 0 !important;
+  transition: transform .2s ease;
+}
+#div_player_list .regular-checkbox:checked + label {
+  background: #00A0EA !important;
+  box-shadow: none !important;
+}
+#div_player_list .regular-checkbox:checked + label::after {
+  content: "" !important;
+  transform: translateX(20px);
+}
+#div_player_list .regular-checkbox + label:hover {
+  background: #b8b8b8 !important;
+}
+#div_player_list .regular-checkbox:checked + label:hover {
+  background: #0087c7 !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -1186,9 +1237,10 @@ function closeBg() {
             <li>
                 <img src="data:image/png;base64,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" width="52" height="52">
             </li>
-            <li><a href="#" target="_blank">LogRender</a></li>
-            <li><a href="https://forum.olivos.run/" target="_blank">主站</a></li>
-            <li><a href="https://github.com/lunzhiPenxil/TrpgLogRender" target="_blank">本项目GitHub</a></li>
+            <li><a href="#" target="_blank">着色器</a></li>
+            <li><a href="https://dice.trpgwiki.com/" target="_blank">主站</a></li>
+            <li><a href="https://forum.olivos.run/" target="_blank">论坛</a></li>
+            <li><a href="https://github.com/lunzhiPenxil/TrpgLogRender" target="_blank">仓库</a></li>
         </ul>
         <div align="center" class="STYLE1">青果跑团记录着色器</div>
         <div align="center" class="STYLE2">
